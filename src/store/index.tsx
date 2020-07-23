@@ -1,6 +1,15 @@
-import { createStore, combineReducers } from "redux";
-import { reducer as AppReducer } from "../reducers";
+import { createStore } from 'redux';
+import { reducers } from '../reducers';
 
-const reducers = combineReducers({
-  app: AppReducer,
-});
+export interface IUserState {
+  name: string;
+  age: number;
+};
+
+export interface IAppState {
+  app: IUserState;
+}
+
+const store = createStore(reducers);
+
+export { store };

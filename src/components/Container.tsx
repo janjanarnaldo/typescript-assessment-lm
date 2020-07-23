@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "react";
 import { nameByRace } from "fantasy-name-generator";
 import { App as MainComponent } from "./App";
-import { SetName, SetAge, IAction } from "../actions";
+import { Actions, IActions } from "../actions";
 import { IAppState } from "../store";
 
 const mapStateToProps = (state: IAppState) => {
@@ -13,12 +13,12 @@ const mapStateToProps = (state: IAppState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<IAction>) => {
+const mapDispatchToProps = (dispatch: Dispatch<IActions>) => {
   return {
     onClick: (): void => {
       let randomName: string = nameByRace("human").toString();
-      dispatch(SetAge(Math.floor(Math.random() * 100)));
-      dispatch(SetName(randomName));
+      dispatch(Actions.SetAge(Math.floor(Math.random() * 100)));
+      dispatch(Actions.SetName(randomName));
     },
   };
 };
